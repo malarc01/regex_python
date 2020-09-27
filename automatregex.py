@@ -123,3 +123,18 @@ print('line 120', xmas_regex.findall(
 
 
 # Making Your Own Character Classes
+vowel_regex = re.compile(r'[aeiouAEIOU]')
+vowel_regex.findall('RoboCop eats baby food. BABY FOOD.')
+print('line 128', vowel_regex.findall('RoboCop eats baby food. BABY FOOD.'))
+
+consonant_regex_search = re.compile(r'[^aeiouAEIOU]')
+consonant_regex_search.findall('RoboCop eats baby food. BABY FOOD.')
+print('line 132', consonant_regex_search.findall(
+    'RoboCop eats baby food. BABY FOOD.'))
+
+
+# The Caret and Dollar Sign Characters
+hello_search = re.compile(r'^Hello')
+hello_search.search('Hello,world!')
+print('line139', hello_search.search('Hello,world!'))
+print('line 140', hello_search.search('He said hello.') == None)
