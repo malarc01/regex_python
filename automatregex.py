@@ -82,5 +82,27 @@ search.group()
 print(search.group(), 'line 82')
 
 search2 = ha_regex.search('Ha')
-print(search2.group(), 'line 85')
-search2 == None
+# print(search2.group(), 'line 85')
+# search2 == None
+
+# Greedy and Non-greedy Matching
+# Python’s regular expressions are greedy by default
+
+greedy_regex = re.compile(r'(Ha){3,5}')
+mat = greedy_regex.search('HaHaHaHaHa')
+mat.group()
+print(mat.group(), 'line94')
+
+not_greedy = re.compile(r'(Ha){3,5}?')
+mat2 = not_greedy.search('HaHaHaHaHa')
+mat2.group()
+print(mat2.group(), 'line99')
+
+
+# The findall() Method
+
+phone_regex = re.compile(r'\d\d\d-\d\d\d-\d\d\d\d')  # has no groups
+search_string = phone_regex.search('Cell: 415-555-9999 Work: 212-555-0000')
+search_string.group()
+print('line 107', search_string.group())
+print(phone_regex.findall('Cell: 415-555-9999 Work: 212-555-0000'))
