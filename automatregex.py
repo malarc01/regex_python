@@ -106,3 +106,20 @@ search_string = phone_regex.search('Cell: 415-555-9999 Work: 212-555-0000')
 search_string.group()
 print('line 107', search_string.group())
 print(phone_regex.findall('Cell: 415-555-9999 Work: 212-555-0000'))
+
+# with groups
+fone_regex = re.compile(r'(\d\d\d)-(\d\d\d)-(\d\d\d\d)')  # has groups ()
+fone_regex.findall('Cell:415-555-9999')
+print('line 113', fone_regex.findall('Cell:415-555-9999'))
+
+# Character Classes
+# + =>
+# match 1 or more digital then space then word 1 or more
+xmas_regex = re.compile(r'\d+\s\w+')
+xmas_regex.findall(
+    '12 drummers, 11 pipers, 10 lords, 9 ladies, 8 maids, 7swans, 6 geese, 5 rings, 4 birds, 3 hens, 2 doves, 1 partridge')
+print('line 120', xmas_regex.findall(
+    '12 drummers, 11 pipers, 10 lords, 9 ladies, 8 maids, 7swans, 6 geese, 5 rings, 4 birds, 3 hens, 2 doves, 1 partridge'))
+
+
+# Making Your Own Character Classes
