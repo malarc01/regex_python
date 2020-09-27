@@ -138,3 +138,20 @@ hello_search = re.compile(r'^Hello')
 hello_search.search('Hello,world!')
 print('line139', hello_search.search('Hello,world!'))
 print('line 140', hello_search.search('He said hello.') == None)
+
+# testing r'\d$'
+ends_with_number = re.compile(r'\d$')
+ends_with_number.search('Your number is 42')
+print('line 145', ends_with_number.search('Your number is 42 '))
+print('line 146', ends_with_number.search('Your number is 42'))
+print(ends_with_number.search('Your number is forty two.') == None)
+
+# tesing r'^\d+$' matches string that both begin + end with one or more numbers
+whole_string_is_number = re.compile(r'^\d+$')
+whole_string_is_number.search('1234567890')
+print('line 152', whole_string_is_number.search('1234567890'))
+print('line 153', whole_string_is_number.search('12345xyz67890'))
+print('line 154', whole_string_is_number.search('12  34567890'))
+# “Carrots cost dollars”
+
+# The Wildcard Character
