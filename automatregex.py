@@ -155,3 +155,9 @@ print('line 154', whole_string_is_number.search('12  34567890'))
 # “Carrots cost dollars”
 
 # The Wildcard Character
+regex = re.compile(r'.at')
+regex.findall('The cat in the hat sat on the flat mat')
+print('line 160', regex.findall('The cat in the hat sat on the flat mat'))
+
+
+# Matching Everything with Dot-Star
