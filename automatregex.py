@@ -161,3 +161,50 @@ print('line 160', regex.findall('The cat in the hat sat on the flat mat'))
 
 
 # Matching Everything with Dot-Star
+# * => match 0 or more 0 or 1 or 2 or 3 etc.
+name = re.compile(r'First Name:(.*)Last Name:(.*)')
+result = name.search('First Name: Al Last Name: Sweigart')
+print('line 167', result.group())
+print('should print Al Sweigart ', result.group(0))
+print('should print Al', result.group(1))
+print('should print Sweigart', result.group(2))
+
+# .* uses greedy mode means start with most text as possible
+# .*? is for non greedy mode.
+
+no_greed = re.compile(r'<.*?>')
+nogreed_search = no_greed.search('<To serve man> for dinner.>')
+print(nogreed_search.group())
+
+greed_regex = re.compile(r'<.*>')
+obj = greed_regex.search('<To serve man> for dinner.>')
+print('probably returns whole setenece?', obj.group())
+
+
+# Matching Newlines with the Dot Character
+# .* The dot-star will match everything except a newline
+no_newline_regex = re.compile('.*')
+print('line 187', no_newline_regex.search(
+    'Serve the public trust.\nProtect the innocent.\nUphold the law.').group())
+
+# re.DOTALL as the second argument to re.compile(), you can make the dot character match all characters, including the newline character.
+
+new_line_regex = re.compile('.*', re.DOTALL)
+print('line 192', new_line_regex.search(
+    'Serve the public trust.\nProtect the innocent.\nUphold the law.').group())
+
+# Case-Insensitive Matching
+reg1 = re.compile('RoboCop')
+reg2 = re.compile('ROBOCOP')
+reg3 = re.compile('robOcop')
+reg4 = re.compile('RobocOp')
+
+robocop = re.compile(r'robocop', re.IGNORECASE)
+print(robocop.search('RoboCop is part man, part machine, all cop.').group())
+
+
+print(robocop.search('ROBOCOP protects the innocent.').group())
+
+
+print(robocop.search(
+    'Al, why does your programming book talk about robocop so much?').group())
