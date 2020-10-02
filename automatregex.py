@@ -233,4 +233,23 @@ print('line 230 group(0)', agent_name_regex.search(
 
 
 # Managing Complex Regexes
-verbose_regex = re.compile()
+verbose_regex = re.compile(
+    r'((\d{3}|\(\d{3}\))?(\s|-|\.)?\d{3}(\s|-|\.)\d{4}(\s*(ext|x|ext.)\s*\d{2,5})?)')
+
+verbose_regex = re.compile(r'''(
+    (\d{3}|\(\d{3}\))?            # area code
+    (\s|-|\.)?                    # separator
+    \d{3}                         # first 3 digits
+    (\s|-|\.)                     # separator
+    \d{4}                         # last 4 digits
+    (\s*(ext|x|ext.)\s*\d{2,5})?  # extension
+    )''', re.VERBOSE)
+
+
+# Combining re.IGNORECASE, re.DOTALL, and re.VERBOSE
+
+some_regex = re.compile('foo', re.IGNORECASE | re.DOTALL)
+
+some_regex = re.compile('foo', re.IGNORECASE | re.DOTALL | re.VERBOSE)
+
+# Project: Phone Number and Email Address Extractor
