@@ -208,3 +208,29 @@ print(robocop.search('ROBOCOP protects the innocent.').group())
 
 print(robocop.search(
     'Al, why does your programming book talk about robocop so much?').group())
+
+
+# Substituting Strings with the sub() Method
+# + => 1 or more
+# sub(arg1,arg2) arg1 = is string to replace any matches
+# arg2 => string for regular expression
+name_regex = re.compile(r'Agent \w+')
+name_regex.sub(
+    'CENSORED', 'Agent Alice gave the secret documents to Agent Bob.')
+print(name_regex.sub('CENSORED', 'Agent Alice gave the secret documents to Agent Bob.'))
+
+# using the matched text itself as part of the substitution
+agent_name_regex = re.compile(r'Agent (\w)\w*')
+agent_name_regex.sub(
+    r'\1****', 'Agent Alice told Agent Carol that Agent Eve knew Agent Bob was a double agent.')
+
+print(agent_name_regex.sub(r'\1****',
+                           'Agent Alice told Agent Carol that Agent Eve knew Agent Bob was a double agent.'))
+print('line 229 group(1)', agent_name_regex.search(
+    'Agent Alice told Agent Carol that Agent Eve knew Agent Bob was a double agent.').group(1))
+print('line 230 group(0)', agent_name_regex.search(
+    'Agent Alice told Agent Carol that Agent Eve knew Agent Bob was a double agent.').group(0))
+
+
+# Managing Complex Regexes
+verbose_regex = re.compile()
